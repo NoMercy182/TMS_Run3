@@ -11,12 +11,12 @@ console.log(x + y + z);
 // Task 2
 
 let userAge = +prompt('Enter your age: ', '');
-let secondsInMinute = 60;
-let minuteInHour = 60;
-let houresInDay = 24;
-let daysInYear = 365;
+const SECONDS_IN_MINUTE = 60;
+const MINUTES_IN_HOUR = 60;
+const HOURS_IN_DAY = 24;
+const DAYS_IN_YEAR = 365;
 
-let myAgeInSeconds = BigInt(userAge * secondsInMinute * minuteInHour * houresInDay * daysInYear);
+let myAgeInSeconds = BigInt(userAge * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR);
 
 alert(`your age in seconds: ${myAgeInSeconds}`);
 
@@ -154,20 +154,4 @@ if (ask == '+') {
   alert(xx / yy);
 } else {
   alert('Вы ввели какую-то бараду =)');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} 
