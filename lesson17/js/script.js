@@ -1,117 +1,124 @@
-// // task 1
+// Homework ------------------------------------------------------------
 
-// let a = 1;
-// let b = 1;
-// let c = ++a;
-// let d = b++;
+// Task 1 ------------------------------------------------------------
 
-// console.log(a, b, c, d);
+const strTrue = 'true';
+const isFalse = false;
+const NUMBER_17 = 17;
+const und = undefined;
+const empty = null;
 
-// // task 2
+console.log(typeof(strTrue),
+            typeof(isFalse),
+            typeof(NUMBER_17),
+            typeof(und),
+            typeof(empty));
 
-// let year = prompt('в каком году была опубликована спецификация ecmascript - 2015?');
+// Task 2 ------------------------------------------------------------
 
-// if (year < 2015) {
-//   alert('это слишком рано');
-// } else if (year > 2015) {
-//   alert('Это поздновато');
-// } else {
-//   alert('верно');
-// }
+const height = 15;
+const width = 20;
 
-// // task 3
-
-// let number = +prompt('Введите число: ', '');
-
-
-// if (number > 0 ) {
-//   alert(1);
-// } else if (number < 0) {
-//   alert(-1);
-// } else if (number === 0) {
-//   alert(0);
-// }
-
-// Tasks ------------------------------------------------------------
-
-// task 1 ------------------------------------------------------------
-
-const a = +prompt('Enter first number:', '');
-const b = +prompt('Enter second number:', '');
-
-let result = (a + b < 4) ? 'Мало' : 'Много';
-
-// task 2 ------------------------------------------------------------
-
-let ask = prompt('Enter Your login:', '');
-let answer;
-let pass;
-
-if (ask == 'Admin' || ask == 'admin') {
-  pass = prompt('Enter password', '');
-  
-  if (pass == 'main') {
-    answer = 'Hello';
-  } else if (pass === null || pass === '') {
-    answer = 'cancelled';
-  } else {
-    answer = 'error, try again.';
-  }
-  
-} else if (ask === null || ask === '') {
-  answer = 'cancelled';
+if (height > width) {
+  console.log(height);
 } else {
-  answer = "I don't know you";
+  console.log(width);
 }
-alert(answer);
 
-// task 3 ------------------------------------------------------------
+// Task 3 ------------------------------------------------------------
 
-const userNumber = +prompt('Enter your number: ', '');
-
-for (let i = 0; i < userNumber; i += 1) {
-  if (i % 2 != 0) {
-    continue;
+for (let i = 1; i <= 20; i += 1) {
+  if (i % 3 === 0) {
+    console.log(i);
   }
-  console.log(i);
 }
 
-// task 4 ------------------------------------------------------------
+// Task 4 ------------------------------------------------------------
 
-let myNumber = +prompt('Enter your numberrr: ', '');
+let key = true;
+let documents = true;
+let pen = true;
+let apple = false;
+let orange = true;
+
+const shouldGoToWork = key && documents && pen && (apple || orange); // ??????)))
+
+// Task 5 ------------------------------------------------------------
+
+const userNumber = +prompt('Enter your number:', '');
+
+if (userNumber % 5 === 0 && userNumber % 3 === 0) {
+  alert("FizBuz");
+} else if (userNumber % 3 === 0) {
+  alert('Buz');
+} else if (userNumber % 5 === 0) {
+  alert("Fiz");
+} else {
+  alert("ниделица -____-");
+}
+
+// Task 6 ------------------------------------------------------------
+
+const yourAge = +prompt('Скажи свой возраст:', '');
+
+if (yourAge > 18) {
+  alert('Попей пивка');
+} else if (yourAge < 16) {
+  alert('Пей колу');
+} else if (16 <= yourAge <= 18) {
+  alert('Можешь выкурить сигаретку, только маме не говори');
+}
+
+// Task 7 ------------------------------------------------------------
+
+let myAsk = prompt('Куда едем?', '');
 
 while(true) {
-  if (myNumber == 100) {
-    alert('You got it!!!');
-    break;
-  } else {
-    alert('Missed!');
-    myNumber = +prompt('Enter your numberrr: ', '');
+  switch (myAsk) {
+    case 'юг':
+      console.log('на юг пойдешь счастье найдешь');
+      break;
+    case 'север':
+      console.log('на север пойдешь много денег найдешь');
+      break;
+    case 'запад':
+      console.log('на запад пойдешь верного друга найдешь');
+      break;
+    case 'восток':
+      console.log('на восток пойдешь разработчиком станешь');
+      break;
+    default:
+      myAsk = prompt('Куда едем?', '');       
   }
 }
 
-// task 5 ------------------------------------------------------------
+// Task 1 Hard ------------------------------------------------------------
 
-let whatDoing = prompt('Что делаем? "+", "-", "*", "/"');
+let str = prompt('Как вас величать?', '');
 
-const x = prompt('Введите первое число: ', '');
-const y = prompt('Введите второе число: ', '');
+let arr = str.split(' ');
 
-switch(whatDoing) {
-  case '+':
-    alert(x + y);
-    break;
-  case '-':
-    alert(x - y);
-    break;
-  case '*':
-    alert(x * y);
-    break;
-  case '/':
-    alert(x / y);
-    break;
-  default:
-    alert('Error');        
-}
+let userName = arr[0].toLowerCase();
+let userSurname = arr[1].toLowerCase();
 
-// task 6 ------------------------------------------------------------ 
+alert(`Привет, ${userName[0].toUpperCase()}${userName.substring(1)} ${userSurname[0].toUpperCase()}${userSurname.substring(1)}`);
+
+// Task 2 Hard ------------------------------------------------------------
+
+const firstNumber = +prompt('Введи число:', '');
+const secondNumber = +prompt('Сколько отнять:', '');
+const thirdNumber = +prompt('Сколько прибавить:', '');
+const fourthNumber = +prompt('На сколько умножить:', '');
+const fifthNumber = +prompt('На сколько разделить от предыдущего результата:', '');
+
+alert(`((((${fifthNumber} - ${secondNumber}) + ${thirdNumber}) * ${fourthNumber}) / ${fifthNumber} = ${(((firstNumber - secondNumber) + thirdNumber) * fourthNumber) / 2})`);
+
+// Task 3 Hard ------------------------------------------------------------
+
+let n = +prompt('Enter your number:', '');
+let strr = '';
+
+for (let i = 0; i < n; i += 1) {
+  strr += '#';
+  console.log(strr);
+} 
