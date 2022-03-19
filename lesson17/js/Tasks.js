@@ -106,4 +106,18 @@ if (dogWeight >= 15) {
   console.log("Моя собака делает гав-гав");
 } else {
   console.log("Моя собака слишком маленькая, чтобы она что-то делала");
-} 
+}
+
+// task 8 ------------------------------------------------------------
+
+let simpleN = +prompt('Enter your number:', '');
+
+nextPrime:
+for (let i = 2; i < simpleN; i += 1) {
+  for (let j = 2; j < i; j += 1) {
+    if (i % j == 0) {
+      continue nextPrime;
+    }
+  }
+  console.log(i);
+}

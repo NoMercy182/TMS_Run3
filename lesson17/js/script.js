@@ -2,16 +2,16 @@
 
 // Task 1 ------------------------------------------------------------
 
-const strTrue = 'true';
+const stringTrue = 'true';
 const isFalse = false;
 const NUMBER_17 = 17;
-const und = undefined;
+const undefinedVariable = undefined;
 const empty = null;
 
-console.log(typeof(strTrue),
+console.log(typeof(stringTrue),
             typeof(isFalse),
             typeof(NUMBER_17),
-            typeof(und),
+            typeof(undefinedVariable),
             typeof(empty));
 
 // Task 2 ------------------------------------------------------------
@@ -121,4 +121,4 @@ let strr = '';
 for (let i = 0; i < n; i += 1) {
   strr += '#';
   console.log(strr);
-} 
+}
