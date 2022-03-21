@@ -98,5 +98,4 @@ function triangleOrNot (a, b, c) {
   let result = a + b > c && a + c > b && b + c > a;
   return result;
 }
-
 console.log(triangleOrNot(2, 20, 3));
