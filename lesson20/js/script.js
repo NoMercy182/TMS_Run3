@@ -56,13 +56,19 @@ console.log(animals[(animals.length - 1)]);
 const numbers = [5, 43, 63, 23, 90];
 
 while (true) {
-  if(numbers.length == 0) {
+  if (numbers.length === 0) {
     break;
   }
   numbers.pop();
 }
 
 console.log(numbers);
+
+const numbers2 = [5, 43, 63, 23, 90];
+
+numbers2.splice(0, 5);
+
+console.log(numbers2);
 
 // Task 4 ---------------------------------------------------------
 
@@ -93,11 +99,7 @@ const oddNumbers = [1, 3, 5, 7, 9];
 
 const allNumbers = evenNumbers.concat(oddNumbers);
 
-for (let i = 0; i < allNumbers.length; i += 1) {
-  if (allNumbers[i] == '8') {
-    console.log(allNumbers.indexOf(allNumbers[i]));
-  }
-}
+console.log(allNumbers.indexOf(8));
 
 // Task 7 ---------------------------------------------------------
 
@@ -110,21 +112,11 @@ console.log(binaryString);
 // Task 1* ---------------------------------------------------------
 
 function polindromTest(string) {
-  let array = [];
-  let stringReverse = '';
-  for (let value of string) {
-    array.push(value);
-  }
-  stringReverse = (array.reverse()).join('');
-  if (stringReverse === string) {
-    console.log('true');
-  } else {
-    console.log('false');
-  }
+  return Array.from(string).reverse().join('') === string;
 }
 
-polindromTest('esedese');
-polindromTest('esw');
+console.log(polindromTest('esedese'));
+console.log(polindromTest('axc'));
 
 // Task 2* ---------------------------------------------------------
 
@@ -136,29 +128,16 @@ const matrix = [
 ];
 
 let counter = 0;
-let sum0 = 0;
-let sum1 = 0;
-let sum2 = 0;
-let sum3 = 0;
+let sum = 0;
 
-for (let value of matrix[0]) {
-  sum0 += value;
-  counter += 1;
-}
-for (let value of matrix[1]) {
-  sum1 += value;
-  counter += 1;
-}
-for (let value of matrix[2]) {
-  sum2 += value;
-  counter += 1;
-}
-for (let value of matrix[3]) {
-  sum3 += value;
-  counter += 1;
+for (let i of matrix) {
+  for (let j of i) {
+    sum += j;
+    counter += 1;
+  }
 }
 
-console.log((sum0 + sum1 + sum2 + sum3) / counter);
+console.log(sum / counter);
 
 // Task 3* ---------------------------------------------------------
 
@@ -180,11 +159,11 @@ function arrayDinamic() {
   let array1 = [];
   let array2 = [];
   for (let i = 1; i <= 5; i += 1) {
-    array1.push(Math.floor(Math.random()*10));
+    array1.push(Math.floor(Math.random() * 10));
   }
   console.log(array1);
   for (let value of array1) {
-    array2.push(value**3);
+    array2.push(value ** 3);
   }
   console.log(array2);
 }

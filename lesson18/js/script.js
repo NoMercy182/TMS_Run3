@@ -30,7 +30,7 @@ function trimSting(str, num1, num2) {
   return result;
 }
 
-console.log(trimSting('Oliver',0,3));
+console.log(trimSting('Oliver', 0, 3));
 
 // Task 4 -------------------------------------------------------------
 
@@ -65,7 +65,7 @@ function getSumSum(a, b) {
   return sum;
 }
 
-console.log(getSumSum(10,10));
+console.log(getSumSum(10, 10));
 
 // Task 6 -------------------------------------------------------------
 
@@ -95,8 +95,7 @@ fooboo(false, foo, boo);
 // Task 1* -------------------------------------------------------------
 
 function triangleOrNot (a, b, c) {
-  let result = a + b > c && a + c > b && b + c > a ? true : false;
+  let result = a + b > c && a + c > b && b + c > a;
   return result;
 }
-
-console.log(triangleOrNot(2,20,3));
+console.log(triangleOrNot(2, 20, 3));
