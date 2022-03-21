@@ -21,7 +21,7 @@ const randomObj1 = {
 };
 
 function keyInObj(key, obj) {
-  return key in obj ? true : false;
+  return key in obj;
 }
 
 console.log(keyInObj('color', randomObj1));
@@ -84,7 +84,7 @@ usersDB.user01.password = prompt('Enter your password:', '');
 while (true) {
   let ask1 = prompt('Confirm login:', '');
   let ask2 = prompt('Confirm password:', '');
-  if (  ask1 === '' || ask2 === '' || ask1 === null || ask2 === null) {
+  if (ask1 === '' || ask2 === '' || ask1 === null || ask2 === null) {
     alert("You're out");
     break;
   } else if (ask1 === usersDB.user01.login && ask2 === usersDB.user01.password) {
@@ -165,7 +165,7 @@ function compareObjects(obj1, obj2) {
   let string1 = (arrKeys1.concat(arrProperty1)).join('');
   let string2 = (arrKeys2.concat(arrProperty2)).join('');
   
-  let result = string1 === string2 ? true : false;
+  let result = string1 === string2;
   console.log(result);
 }
 
