@@ -193,10 +193,39 @@ console.log(highAndLow('1 -2 -3 9'));
 
 // Task 5 Advanced --------------------------------------------------------------
 
+function isIsogram(string) {
+  const array = string.toLowerCase().split('');
+  const obj = {};
+  let counter = 1;
 
+  array.forEach(function(value) {
+    obj[value] = (value in obj) ? obj[value] + 1 : counter;
+  });
+
+  for (let key in obj) {
+    if (obj[key] > 1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(isIsogram('Dermatoglyphics'));
+console.log(isIsogram('aba'));
+console.log(isIsogram('moOse'));
 
 // Task 6 Advanced --------------------------------------------------------------
 
+const DoTrash = (string) => {
+  let array = [];
+  for (let i = 0; i < string.length; i += 1) {
+    array.push(string.charCodeAt(i));
+  }
+  let total1 = +array.join('');
+  let total2 = +String(total1).split('').map(v => v == 7 ? v = 1 : v).join('');
+  return total1 - total2;
+};
 
+console.log(DoTrash('ABC'));
 
 // Task 7 Advanced --------------------------------------------------------------
