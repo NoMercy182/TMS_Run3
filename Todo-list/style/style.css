@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.container {
+  background-image: url(../img/1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 100px auto;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
+
+.headerUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.headerUp__btn {
+  height: 65px;
+  width: 100%;
+  max-width: 120px;
+  padding: 10px 5px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: yellow;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.headerUp__btn:hover {
+  font-size: 21px;
+}
+
+.headerUp__input {
+  font-size: 18px;
+  text-align: center;
+  height: 65px;
+  width: 100%;
+  max-width: 340px;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
+
+.headerDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.headerDown__btn {
+  height: 65px;
+  width: 100%;
+  max-width: 170px;
+  padding: 10px 5px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: yellow;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.headerDown__btn:hover {
+  font-size: 21px;
+}
+
+.headerDown__input {
+  text-align: center;
+  height: 65px;
+  width: 100%;
+  font-size: 18px;
+  max-width: 170px;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
+
+.headerDown__counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: yellow;
+  min-height: 60px;
+  padding: 10px 5px;
+  font-size: 20px;
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.card__containerLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card__containerLeft__btn {
+  min-height: 30px;
+  width: 100%;
+  min-width: 50px;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: yellow;
+}
+
+.card__containerLeft__input {
+  min-width: 300px;
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
+
+.card__containerRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.card__containerRight__btn {
+  min-height: 30px;
+  min-width: 50px;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: yellow;
+  margin-bottom: 50px;
+}
+
+.card__containerRight__date {
+  min-height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  width: 100%;
+  min-width: 100px;
+  padding: 5px;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

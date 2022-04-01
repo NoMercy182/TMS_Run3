@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Titillium Web', sans-serif;
+  
+}
+
+.container {
+  background-image: url(../img/1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 100px auto;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 3px black solid;
+}
+
+.headerUp {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  &__btn {
+    height: 65px;
+    width: 100%;
+    max-width: 120px;
+    padding: 10px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 3px black solid;
+    background-color: yellow;
+    transition: all .3s linear;
+    &:hover {
+      font-size: 21px;
+    }
+  }
+  &__input {
+    font-size: 18px;
+    text-align: center;
+    height: 65px;
+    width: 100%;
+    max-width: 340px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: 3px black solid;
+  }
+}
+
+.headerDown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  &__btn {
+    height: 65px;
+    width: 100%;
+    max-width: 170px;
+    padding: 10px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 3px black solid;
+    background-color: yellow;
+    transition: all .3s linear;
+    &:hover {
+      font-size: 21px;
+    }
+  }
+  &__input {
+    text-align: center;
+    height: 65px;
+    width: 100%;
+    font-size: 18px;
+    max-width: 170px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: 3px black solid;
+  }
+  &__counter {
+    display: flex;
+    align-items: center;
+    color: yellow;
+    min-height: 60px;
+    padding: 10px 5px;
+    font-size: 20px;
+  }
+}
+
+.card {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 3px black solid;
+  background-color: rgba(0, 0, 0, 0.7);
+  &__containerLeft {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    &__btn {
+      min-height: 30px;
+      width: 100%;
+      min-width: 50px;
+      border-radius: 5px;
+      border: 3px black solid;
+      background-color: yellow;
+    }
+    &__input {
+      min-width: 300px;
+      width: 100%;
+      min-height: 60px;
+      padding: 10px 5px;
+      border-radius: 5px;
+      border: 3px black solid;
+    }
+  }
+  &__containerRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &__btn {
+      min-height: 30px;
+      min-width: 50px;
+      border-radius: 5px;
+      border: 3px black solid;
+      background-color: yellow;
+      margin-bottom: 50px;
+    }
+    &__date {
+      min-height: 30px;
+      border-radius: 5px;
+      background-color: white;
+      width: 100%;
+      min-width: 100px;
+      padding: 5px;
+      text-align: center;
+    }
+  }
+}
