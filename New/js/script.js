@@ -51,60 +51,53 @@ const searchInput = document.createElement('input');
 searchInput.classList.add('navDown__input', 'input');
 searchInput.placeholder = 'Search ...';
 
-// ------------------------------- Arrays ---------------------------------
+// ------------------------------- Array ---------------------------------
 
-const cardsInfo = {
-  cardsDB : [],
-  allCards: [],
-  compitedCards: [],
-  allActiveCards: [],
-};
+let array = [];
+let arrayComleted = [];
 
 // ------------------------------- Functins ---------------------------------
-let array = [];
-let arrayDB = [];
 
 const createCard = () => {
   const text = toDoInput.value;
   todoApp.append(getToDoCard(text));
+  toDoInput.value = '';
 
-  cardsInfo.cardsDB = document.querySelectorAll('.card');
-  arrayDB = Array.from(cardsInfo.cardsDB);
+  array = Array.from(array = document.querySelectorAll('.card'));
 
-  cardsInfo.allCards = document.querySelectorAll('.card');
-  console.log(cardsInfo.allCards);
-
-  array = Array.from(cardsInfo.allCards);
   console.log(array);
   counterAll.innerText = `All: ${array.length}`;
 };
 
 
 const deleteAllCard = () => {
-  for (let v of cardsInfo.allCards) {
-    v.remove();
-  }
   while (true) {
     array.pop();
     if (array.length === 0) {
       break;
     }
   }
+  while (true) {
+    arrayComleted.pop();
+    if (arrayComleted.length === 0) {
+      break;
+    }
+  }
+  document.querySelectorAll('.card').forEach(item => item.remove());
   counterAll.innerText = `All: ${array.length}`;
+  counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
 };
 
 const deleteLastCard = () => {
-  cardsInfo.allCards[array.length - 1].remove();
+  document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].remove();
   array.pop();
+  console.log(array.length);
+  console.log(array);
   counterAll.innerText = `All: ${array.length}`;
+  counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
 };
 
-const showAllCards = () => {
-  cardsInfo.cardsDB.forEach(item => {
-    todoApp.append(item);
-  });
-  counterAll.innerText = `All: ${cardsInfo.cardsDB.length}`;
-};
+btnDeleteLast.addEventListener('click', deleteLastCard);
 
 // ------------------------------- card ---------------------------------
 
@@ -117,7 +110,18 @@ function getToDoCard(text) {
 
   const btnCheck = document.createElement('button');
   btnCheck.classList.add('card__LeftContainer__btn', 'btn', 'btnCkeck');
-  btnCheck.innerText = ' ';
+  btnCheck.innerText = '';
+  
+// ------------------------------- btnChech ---------------------------------
+
+  btnCheck.addEventListener('click', ()=> {
+    btnCheck.innerText = btnCheck.innerText === '' ? '✓' : '';
+    card.classList.toggle('done');
+    arrayComleted = Array.from(arrayComleted = document.querySelectorAll('.done'));
+    console.log(arrayComleted);
+    counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
+
+  });
 
   const textArea = document.createElement('p');
   textArea.classList.add('card__LeftContainer__textArea');
@@ -138,11 +142,41 @@ function getToDoCard(text) {
   cardLeftContainer.append(btnCheck, textArea);
   cardRightContainer.append(btnClose, cardDate);
 
+  // ------------------------------- closeThisCard ---------------------------------
+
   const closeThisCard = () => {
-    todoApp.removeChild(card);
+    if (card.classList.contains('done')) {
+      card.remove();
+      arrayComleted.pop(card);
+    }
+    card.remove();
+    array.pop(card);
+    counterAll.innerText = `All: ${array.length}`;
+    counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
   };
 
   btnClose.addEventListener('click', closeThisCard);
+
+  // ------------------------------- showCompletedCards ---------------------------------
+
+  const showCompletedCards = () => {
+    document.querySelectorAll('.card').forEach(item => item.remove());
+    arrayComleted.forEach(item => {
+      todoApp.append(item);
+    });
+  };
+  btnShowCompleted.addEventListener('click', showCompletedCards);
+
+  // ------------------------------- showAllCards ---------------------------------
+
+  const showAllCards = () => {
+    array.forEach(item => {
+      todoApp.append(item);
+    });
+  };
+  btnShowAll.addEventListener('click', showAllCards);
+
+  // ------------------------------- deleteLastCard ---------------------------------
 
   return card;
 }
@@ -151,8 +185,6 @@ function getToDoCard(text) {
 
 btnAdd.addEventListener('click', createCard);
 btnDeleteAll.addEventListener('click', deleteAllCard);
-btnDeleteLast.addEventListener('click', deleteLastCard);
-btnShowAll.addEventListener('click', showAllCards);
 
 // ------------------------------- append -----------------------------------
 
@@ -163,3 +195,5 @@ navUp.append(btnDeleteAll, btnDeleteLast, toDoInput, btnAdd);
 navDown.append(counterAll, counterCompleted, btnShowAll, btnShowCompleted, searchInput);
 
 root.append(todoApp);
+
+// каждому действию приписать новый класс и хуячить его в массив

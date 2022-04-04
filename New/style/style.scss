@@ -112,3 +112,10 @@
     }
   }
 }
+
+.done {
+  background:rgba(32, 172, 95, 0.7);
+  p {
+    text-decoration: line-through;
+  }
+}

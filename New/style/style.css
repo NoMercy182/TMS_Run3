@@ -146,4 +146,12 @@
   border: 3px solid black;
   text-align: center;
 }
+
+.done {
+  background: rgba(32, 172, 95, 0.7);
+}
+
+.done p {
+  text-decoration: line-through;
+}
 /*# sourceMappingURL=style.css.map */
