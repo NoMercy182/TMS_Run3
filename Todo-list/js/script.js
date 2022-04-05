@@ -97,11 +97,14 @@ const deleteAllCard = () => {
 };
 
 const deleteLastCard = () => {
+  if (document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].classList.contains('done')) {
+    arrayComleted.pop();
+    arrCounter.pop();
+  } else {
+    arrCounter.pop();
+  }
   document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].remove();
-  array.pop();
-  console.log(array.length);
-  console.log(array);
-  counterAll.innerText = `All: ${array.length}`;
+  counterAll.innerText = `All: ${arrCounter.length}`;
   counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
 };
 
@@ -211,5 +214,4 @@ root.append(todoApp);
 
 // каждому действию приписать новый класс и хуячить его в массив
 // создавать тудушку в массив, пушить и выводить через map
-// подумать над счетчиком
 // реализовать поиск
