@@ -51,10 +51,11 @@ const searchInput = document.createElement('input');
 searchInput.classList.add('navDown__input', 'input');
 searchInput.placeholder = 'Search ...';
 
-// ------------------------------- Array ---------------------------------
+// ------------------------------- Arrays ---------------------------------
 
-let array = [];
-let arrayComleted = [];
+let array = [];          // Массив с .card
+let arrayComleted = [];  // Массив с .done
+let arrCounter = [];     // Массив с .card и .card .done
 
 // ------------------------------- Functins ---------------------------------
 
@@ -63,10 +64,11 @@ const createCard = () => {
   todoApp.append(getToDoCard(text));
   toDoInput.value = '';
 
-  array = Array.from(array = document.querySelectorAll('.card'));
+  arrCounter = Array.from(array = document.querySelectorAll('.card'));
+  array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
 
   console.log(array);
-  counterAll.innerText = `All: ${array.length}`;
+  counterAll.innerText = `All: ${arrCounter.length}`;
 };
 
 
@@ -83,8 +85,14 @@ const deleteAllCard = () => {
       break;
     }
   }
+  while (true) {
+    arrCounter.pop();
+    if (arrCounter.length === 0) {
+      break;
+    }
+  }
   document.querySelectorAll('.card').forEach(item => item.remove());
-  counterAll.innerText = `All: ${array.length}`;
+  counterAll.innerText = `All: ${arrCounter.length}`;
   counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
 };
 
@@ -112,7 +120,7 @@ function getToDoCard(text) {
   btnCheck.classList.add('card__LeftContainer__btn', 'btn', 'btnCkeck');
   btnCheck.innerText = '';
   
-// ------------------------------- btnChech ---------------------------------
+// ------------------------------- btnCheck ---------------------------------
 
   btnCheck.addEventListener('click', ()=> {
     btnCheck.innerText = btnCheck.innerText === '' ? '✓' : '';
@@ -147,11 +155,13 @@ function getToDoCard(text) {
   const closeThisCard = () => {
     if (card.classList.contains('done')) {
       card.remove();
-      arrayComleted.pop(card);
+      arrayComleted.pop();
+      console.log(arrayComleted);
     }
     card.remove();
-    array.pop(card);
-    counterAll.innerText = `All: ${array.length}`;
+    array.pop();
+    arrCounter.pop();
+    counterAll.innerText = `All: ${arrCounter.length}`;
     counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
   };
 
@@ -171,6 +181,9 @@ function getToDoCard(text) {
 
   const showAllCards = () => {
     array.forEach(item => {
+      todoApp.append(item);
+    });
+    arrayComleted.forEach(item => {
       todoApp.append(item);
     });
   };
@@ -197,3 +210,6 @@ navDown.append(counterAll, counterCompleted, btnShowAll, btnShowCompleted, searc
 root.append(todoApp);
 
 // каждому действию приписать новый класс и хуячить его в массив
+// создавать тудушку в массив, пушить и выводить через map
+// подумать над счетчиком
+// реализовать поиск
