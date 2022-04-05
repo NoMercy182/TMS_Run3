@@ -51,64 +51,16 @@ const searchInput = document.createElement('input');
 searchInput.classList.add('navDown__input', 'input');
 searchInput.placeholder = 'Search ...';
 
+const btnSearchInput = document.createElement('button');
+btnSearchInput.classList.add('navDown__btn', 'btn', 'btn-search');
+
 // ------------------------------- Arrays ---------------------------------
 
-let array = [];          // Массив с .card
-let arrayComleted = [];  // Массив с .done
-let arrCounter = [];     // Массив с .card и .card .done
-
-// ------------------------------- Functins ---------------------------------
-
-const createCard = () => {
-  const text = toDoInput.value;
-  todoApp.append(getToDoCard(text));
-  toDoInput.value = '';
-
-  arrCounter = Array.from(array = document.querySelectorAll('.card'));
-  array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
-
-  console.log(array);
-  counterAll.innerText = `All: ${arrCounter.length}`;
-};
-
-
-const deleteAllCard = () => {
-  while (true) {
-    array.pop();
-    if (array.length === 0) {
-      break;
-    }
-  }
-  while (true) {
-    arrayComleted.pop();
-    if (arrayComleted.length === 0) {
-      break;
-    }
-  }
-  while (true) {
-    arrCounter.pop();
-    if (arrCounter.length === 0) {
-      break;
-    }
-  }
-  document.querySelectorAll('.card').forEach(item => item.remove());
-  counterAll.innerText = `All: ${arrCounter.length}`;
-  counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
-};
-
-const deleteLastCard = () => {
-  if (document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].classList.contains('done')) {
-    arrayComleted.pop();
-    arrCounter.pop();
-  } else {
-    arrCounter.pop();
-  }
-  document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].remove();
-  counterAll.innerText = `All: ${arrCounter.length}`;
-  counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
-};
-
-btnDeleteLast.addEventListener('click', deleteLastCard);
+let array = [];      // Массив с .card
+let arrayDone = [];  // Массив с .done
+let arrayAll = [];   // Массив с .card и .card .done
+let countAll;     
+let countDone;
 
 // ------------------------------- card ---------------------------------
 
@@ -123,17 +75,6 @@ function getToDoCard(text) {
   btnCheck.classList.add('card__LeftContainer__btn', 'btn', 'btnCkeck');
   btnCheck.innerText = '';
   
-// ------------------------------- btnCheck ---------------------------------
-
-  btnCheck.addEventListener('click', ()=> {
-    btnCheck.innerText = btnCheck.innerText === '' ? '✓' : '';
-    card.classList.toggle('done');
-    arrayComleted = Array.from(arrayComleted = document.querySelectorAll('.done'));
-    console.log(arrayComleted);
-    counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
-
-  });
-
   const textArea = document.createElement('p');
   textArea.classList.add('card__LeftContainer__textArea');
   textArea.innerText = text;
@@ -153,54 +94,106 @@ function getToDoCard(text) {
   cardLeftContainer.append(btnCheck, textArea);
   cardRightContainer.append(btnClose, cardDate);
 
-  // ------------------------------- closeThisCard ---------------------------------
+  // ------------------------------- btnCheck -----------------------------------
 
-  const closeThisCard = () => {
-    if (card.classList.contains('done')) {
-      card.remove();
-      arrayComleted.pop();
-      console.log(arrayComleted);
-    }
+  btnCheck.addEventListener('click', () => {
+    btnCheck.innerText = btnCheck.innerText === '' ? '✓' : '';
+    card.classList.toggle('done');
+    array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
+    arrayDone = Array.from(document.querySelectorAll('.done'));
+    countDone = arrayDone.length;
+    counterCompleted.innerText = `Completed: ${countDone}`;
+  });
+
+  // ------------------------------- btnClose -----------------------------------
+
+  btnClose.addEventListener('click', () => {
     card.remove();
-    array.pop();
-    arrCounter.pop();
-    counterAll.innerText = `All: ${arrCounter.length}`;
-    counterCompleted.innerText = `Completed: ${arrayComleted.length}`;
-  };
-
-  btnClose.addEventListener('click', closeThisCard);
-
-  // ------------------------------- showCompletedCards ---------------------------------
-
-  const showCompletedCards = () => {
-    document.querySelectorAll('.card').forEach(item => item.remove());
-    arrayComleted.forEach(item => {
-      todoApp.append(item);
-    });
-  };
-  btnShowCompleted.addEventListener('click', showCompletedCards);
-
-  // ------------------------------- showAllCards ---------------------------------
-
-  const showAllCards = () => {
-    array.forEach(item => {
-      todoApp.append(item);
-    });
-    arrayComleted.forEach(item => {
-      todoApp.append(item);
-    });
-  };
-  btnShowAll.addEventListener('click', showAllCards);
-
-  // ------------------------------- deleteLastCard ---------------------------------
+    array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
+    arrayDone = Array.from(document.querySelectorAll('.done'));
+    countDone = arrayDone.length;
+    countAll = array.length + arrayDone.length;
+    counterAll.innerText = `All: ${countAll}`;
+    counterCompleted.innerText = `Completed: ${countDone}`;
+    arrayAll.pop();
+  });
 
   return card;
 }
 
-// ------------------------------- ClickButton ------------------------------
+// ------------------------------- btnDeleteLast -----------------------------------
+
+btnDeleteLast.addEventListener('click', () => {
+  document.querySelectorAll('.card')[document.querySelectorAll('.card').length - 1].remove();
+  array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
+  arrayDone = Array.from(document.querySelectorAll('.done'));
+  countDone = arrayDone.length;
+  countAll = array.length + arrayDone.length;
+  counterAll.innerText = `All: ${countAll}`;
+  counterCompleted.innerText = `Completed: ${countDone}`;
+  arrayAll.pop();
+});
+
+// ------------------------------- btnDeleteAll -----------------------------------
+
+btnDeleteAll.addEventListener('click', () => {
+  document.querySelectorAll('.card').forEach(item => item.remove());
+  array = [];
+  arrayDone = [];
+  arrayAll = [];
+  countDone = arrayDone.length;
+  countAll = array.length + arrayDone.length;
+  counterAll.innerText = `All: ${countAll}`;
+  counterCompleted.innerText = `Completed: ${countDone}`;
+});
+
+// ------------------------------- showAll ----------------------------------------
+
+btnShowAll.addEventListener('click', () => {
+  arrayAll.forEach(item => todoApp.append(item));
+  countDone = arrayDone.length;
+  countAll = array.length + arrayDone.length;
+  counterAll.innerText = `All: ${countAll}`;
+  counterCompleted.innerText = `Completed: ${countDone}`;
+});
+
+// --------------------------- btnShowCompleted------------------------------------
+
+btnShowCompleted.addEventListener('click', () => {
+  arrayAll = [...array, ...arrayDone];
+  document.querySelectorAll('.card').forEach(item => item.remove());
+  arrayDone.forEach(item => {
+    todoApp.append(item);
+  });
+});
+
+// ------------------------------- createCard -------------------------------------
+
+const createCard = () => {
+  const text = toDoInput.value;
+  todoApp.append(getToDoCard(text));
+  toDoInput.value = '';
+  array = Array.from(array = document.querySelectorAll('.card:not(.done)'));
+  arrayDone = Array.from(document.querySelectorAll('.done'));
+  arrayAll = [...array, ...arrayDone];
+  countAll = array.length + arrayDone.length;
+  counterAll.innerText = `All: ${countAll}`;
+};
 
 btnAdd.addEventListener('click', createCard);
-btnDeleteAll.addEventListener('click', deleteAllCard);
+
+ //------------------------------- searchInput -------------------------------
+  //------------------------------- btn-Search --------------------------------
+
+  btnSearchInput.addEventListener('click', () => {
+    document.querySelectorAll('.card').forEach(i => i.remove());
+    arrayAll.filter(item => {
+      if (item.innerText[0] == searchInput.value[0] ||
+          item.innerText[1] == searchInput.value[0]) {
+        todoApp.append(item);
+      }
+    });
+  });
 
 // ------------------------------- append -----------------------------------
 
@@ -208,10 +201,6 @@ todoApp.append(navUp, navDown);
 
 navUp.append(btnDeleteAll, btnDeleteLast, toDoInput, btnAdd);
 
-navDown.append(counterAll, counterCompleted, btnShowAll, btnShowCompleted, searchInput);
+navDown.append(counterAll, counterCompleted, btnShowAll, btnShowCompleted, searchInput, btnSearchInput);
 
 root.append(todoApp);
-
-// каждому действию приписать новый класс и хуячить его в массив
-// создавать тудушку в массив, пушить и выводить через map
-// реализовать поиск

@@ -7,6 +7,11 @@
   font-family: 'Titillium Web', sans-serif;
 }
 
+body {
+  background-image: linear-gradient(120deg, pink, #fdfd8c);
+  height: 3000px;
+}
+
 .btn {
   border-radius: 5px;
   border: 3px solid black;
@@ -43,7 +48,7 @@
   background-size: cover;
   background-attachment: fixed;
   width: 1000px;
-  margin: 100px auto;
+  margin: 20px auto;
   padding: 15px 30px;
   border-radius: 5px;
   border: 5px solid black;
@@ -76,16 +81,24 @@
 }
 
 .navDown__btn {
-  width: calc(23%);
+  width: calc(20%);
 }
 
 .navDown__input {
-  width: calc(23%);
+  width: calc(20%);
 }
 
 .navDown p {
   font-size: 25px;
-  color: pink;
+  color: #fab5c0;
+}
+
+.btn-search {
+  width: calc(8%);
+  background: rgba(32, 172, 95, 0.7);
+  background-image: url(../img/search.svg);
+  background-position: center;
+  background-size: cover;
 }
 
 .card {
