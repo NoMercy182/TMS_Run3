@@ -199,7 +199,6 @@ btnAdd.addEventListener('click', createCard);
   //------------------------------- btn-Search --------------------------------
 
   btnSearchInput.addEventListener('click', () => {
-    searchInput.value = '';
     document.querySelectorAll('.card').forEach(i => i.remove());
     cardsArray.filter(item => {
       if (item.innerText[0] == searchInput.value[0] ||
@@ -207,6 +206,7 @@ btnAdd.addEventListener('click', createCard);
         todoApp.append(item);
       }
     });
+    searchInput.value = '';
   });
 
 // ------------------------------- append -----------------------------------
