@@ -1,5 +1,3 @@
-"use strict";
-
 const root = document.getElementById('root');
 
 const todoApp = document.createElement('div');
@@ -57,10 +55,8 @@ btnSearchInput.classList.add('navDown__btn', 'btn', 'btn-search');
 // ------------------------------- Arrays ---------------------------------
 
 let cardsArray = [];      // Массив с .card
-let arrCounter = [];
+let arrCounter = [];      // счетчик индекса в объекте
 let comleteCounter = 0;
-
-Array.from(cardsArray);
 
 // ------------------------------- card ---------------------------------
 
@@ -97,37 +93,50 @@ function getToDoCard(cardObj) {
 
   // ------------------------------- btnCheck -----------------------------------
 
-  btnCheck.addEventListener('click', () => {
-    cardObj.isChecked = !cardObj.isChecked;               // переключает true / false
-    btnCheck.innerText = cardObj.isChecked ?  '✓' : '';
-    card.classList.toggle('done');
-    //cardsArray[cardObj.index] = document.getElementById(`card-${cardObj.id}`);
-    //cardsArray = cardsArray.filter(Boolean); // чистим от 'empty'
-    cardsArray = cardsArray.filter(item => !(item.id == `card-${cardObj.id}`));
-    cardsArray.push(document.getElementById(`card-${cardObj.id}`));
+  const checkCard = () => {
+    cardsArray.filter(item => {
+      if (item.id == `card-${cardObj.id}`) {
+        if (item.className == 'card') {
+          item.className = 'card done';
+          card.classList = 'card done';
+          cardObj.isChecked = true;
+          btnCheck.innerText = '✓';
+          item.firstChild.firstChild.innerText = '✓';
+        } else if (item.className == 'card done') {
+        item.className = 'card';
+        card.classList = 'card';
+        cardObj.isChecked = false;
+        btnCheck.innerText = '';
+        item.firstChild.firstChild.innerText = '';
+        }
+      }
+    });
+     comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
+     counterCompleted.innerText = `Completed: ${comleteCounter}`;
+     console.log(cardsArray);
+  };
 
-    comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
-    counterCompleted.innerText = `Completed: ${comleteCounter}`;
-    console.log(cardsArray.filter(item => item.className == 'card done').length);
-    //console.log(cardsArray);
-  });
+  btnCheck.addEventListener('click', checkCard);
 
-  // ------------------------------- btnClose -----------------------------------(item.
+  // ------------------------------- btnClose -----------------------------------
   
-  btnClose.addEventListener('click', () => {
+  const closeCard = () => {
     cardsArray = cardsArray.filter(item => !(item.id == `card-${cardObj.id}`)); // -________-
     card.remove();
     counterAll.innerText = `All: ${cardsArray.length}`;
     comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
     counterCompleted.innerText = `Completed: ${comleteCounter}`;
-  });
+    console.log(cardsArray);
+  };
 
+  btnClose.addEventListener('click', closeCard);
+  
   return card;
 }
 
 // ------------------------------- btnDeleteLast -----------------------------------
 
-btnDeleteLast.addEventListener('click', () => {
+const deleteLast = () => {
   cardsArray.pop();
   document.querySelectorAll('.card').forEach(item => item.remove());
   cardsArray.forEach(item => {
@@ -136,21 +145,27 @@ btnDeleteLast.addEventListener('click', () => {
   counterAll.innerText = `All: ${cardsArray.length}`;
   comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
   counterCompleted.innerText = `Completed: ${comleteCounter}`;
-});
+  console.log(cardsArray);
+};
+
+btnDeleteLast.addEventListener('click', deleteLast);
 
 // ------------------------------- btnDeleteAll -----------------------------------
 
-btnDeleteAll.addEventListener('click', () => {
+const deleteAll = () => {
   cardsArray.splice(0, cardsArray.length);
   document.querySelectorAll('.card').forEach(item => item.remove());
   counterAll.innerText = `All: ${cardsArray.length}`;
   comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
   counterCompleted.innerText = `Completed: ${comleteCounter}`;
-});
+  console.log(cardsArray);
+};
+
+btnDeleteAll.addEventListener('click', deleteAll);
 
 // ------------------------------- showAll ----------------------------------------
 
-btnShowAll.addEventListener('click', () => {
+const showAll = () => {
   document.querySelectorAll('.card').forEach(item => item.remove());
   cardsArray.forEach(item => {
     todoApp.append(item);
@@ -158,18 +173,24 @@ btnShowAll.addEventListener('click', () => {
   counterAll.innerText = `All: ${cardsArray.length}`;
   comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
   counterCompleted.innerText = `Completed: ${comleteCounter}`;
-});
+  console.log(cardsArray);
+};
+
+btnShowAll.addEventListener('click', showAll);
 
 // --------------------------- btnShowCompleted------------------------------------
 
-btnShowCompleted.addEventListener('click', () => {
+const showCompleted = () => {
   document.querySelectorAll('.card').forEach(item => item.remove());
   cardsArray.forEach(item => {
     if (item.className == 'card done') {
       todoApp.append(item);
     }
   });
-});
+  console.log(cardsArray);
+};
+
+btnShowCompleted.addEventListener('click', showCompleted);
 
 // ------------------------------- createCard -------------------------------------
 
@@ -192,22 +213,23 @@ const createCard = () => {
   console.log(cardsArray);
 };
 
-
 btnAdd.addEventListener('click', createCard);
 
- //------------------------------- searchInput -------------------------------
-  //------------------------------- btn-Search --------------------------------
+//------------------------------- btn-Search --------------------------------
 
-  btnSearchInput.addEventListener('click', () => {
-    document.querySelectorAll('.card').forEach(i => i.remove());
-    cardsArray.filter(item => {
-      if (item.innerText[0] == searchInput.value[0] ||
-          item.innerText[1] == searchInput.value[0]) {
-        todoApp.append(item);
-      }
-    });
-    searchInput.value = '';
+const search = () => {
+  document.querySelectorAll('.card').forEach(i => i.remove());
+  cardsArray.filter(item => {
+    if (item.innerText[0] == searchInput.value[0] ||
+        item.innerText[1] == searchInput.value[0]) {
+      todoApp.append(item);
+    }
   });
+  searchInput.value = '';
+  console.log(cardsArray);
+};
+
+btnSearchInput.addEventListener('click', search);
 
 // ------------------------------- append -----------------------------------
 
