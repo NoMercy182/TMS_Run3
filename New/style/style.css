@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.btn {
+  border-radius: 5px;
+  border: 3px solid black;
+  width: calc(15%);
+  height: 70px;
+  font-size: 20px;
+  background: yellow;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+.btn:hover {
+  font-size: 24px;
+}
+
+.input {
+  height: 70px;
+  border-radius: 5px;
+  border: 3px solid black;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.appContainer {
+  background-image: url(../img/1.jpg);
+  background-position: center;
+  width: 1000px;
+  margin: 100px auto;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: 5px solid black;
+}
+
+.navUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.navUp__input {
+  width: calc(55% - 45px);
+}
+
+.navDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.navDown__btn {
+  width: calc(23%);
+}
+
+.navDown__input {
+  width: calc(23%);
+}
+
+.navDown p {
+  font-size: 25px;
+  color: pink;
+}
+
+.card {
+  width: 70%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background: rgba(0, 0, 0, 0.7);
+  margin-bottom: 15px;
+}
+
+.card__LeftContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+.card__LeftContainer__btn {
+  width: 50px;
+  height: 40px;
+}
+
+.card__LeftContainer__textArea {
+  width: 420px;
+  min-height: 70px;
+  background: white;
+  border-radius: 5px;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.card__RightContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.card__RightContainer__btn {
+  width: 50px;
+  height: 40px;
+  margin-bottom: 50px;
+}
+
+.card__RightContainer__date {
+  width: 120px;
+  background: white;
+  border-radius: 5px;
+  border: 3px solid black;
+  text-align: center;
+}
+
+.done {
+  background: rgba(32, 172, 95, 0.7);
+}
+
+.done p {
+  text-decoration: line-through;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.btn {
+  border-radius: 5px;
+  border: 3px solid black;
+  width: calc(15%);
+  height: 70px;
+  font-size: 20px;
+  background: yellow;
+  transition: all linear 0.3s;
+  &:hover {
+    font-size: 24px;
+  }
+}
+
+.input {
+  height: 70px;
+  border-radius: 5px;
+  border: 3px solid black;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.appContainer {
+  background-image: url(../img/1.jpg);
+  background-position: center;
+  width: 1000px;
+  margin: 100px auto;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: 5px solid black;
+}
+
+
+.navUp {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  &__input {
+    width: calc(55% - 45px);
+  }
+}
+
+.navDown {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 30px;
+  &__btn {
+    width: calc(23%);
+  }
+  &__input {
+    width: calc(23%);
+  }
+  p {
+    font-size: 25px;
+    color: pink;
+  }
+}
+
+.card {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background: rgba(0, 0, 0, 0.7);
+  margin-bottom: 15px;
+  &__LeftContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    &__btn {
+      width: 50px;
+      height: 40px;
+    }
+    &__textArea {
+      width: 420px;
+      min-height: 70px;
+      background: white;
+      border-radius: 5px;
+      border: 3px solid black;
+      padding: 10px;
+    }
+  }
+  &__RightContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &__btn {
+      width: 50px;
+      height: 40px;
+      margin-bottom: 50px;
+    }
+    &__date {
+      width: 120px;
+      background: white;
+      border-radius: 5px;
+      border: 3px solid black;
+      text-align: center;
+    }
+  }
+}
+
+.done {
+  background:rgba(32, 172, 95, 0.7);
+  p {
+    text-decoration: line-through;
+  }
+}
