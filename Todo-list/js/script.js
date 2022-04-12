@@ -1,80 +1,30 @@
-const root = document.getElementById('root');
-
-const todoApp = document.createElement('div');
-todoApp.classList.add('appContainer');
-
-// ------------------------------- navUp ---------------------------------
-
-const navUp = document.createElement('div');
-navUp.classList.add('navUp');
-
-const btnDeleteAll = document.createElement('button');
-btnDeleteAll.classList.add('navUp__btn', 'btn');
-btnDeleteAll.textContent = 'Delete All';
-
-const btnDeleteLast = document.createElement('button');
-btnDeleteLast.classList.add('navUp__btn', 'btn');
-btnDeleteLast.textContent = 'Delete Last';
-
-const toDoInput = document.createElement('input');
-toDoInput.classList.add('navUp__input', 'input');
-toDoInput.placeholder = 'Enter To Do ...';
-
-const btnAdd = document.createElement('button');
-btnAdd.classList.add('navUp__btn', 'btn');
-btnAdd.textContent = 'Add';
-
-// ------------------------------- navDown ---------------------------------
-
-const navDown = document.createElement('div');
-navDown.classList.add('navDown');
-
-const counterAll = document.createElement('p');
-counterAll.classList.add('navDown__counter1');
-counterAll.innerText = 'All: 0';
-
-const counterCompleted = document.createElement('p');
-counterCompleted.classList.add('navDown__counter2');
-counterCompleted.innerText = 'Completed: 0';
-
-const btnShowAll = document.createElement('button');
-btnShowAll.classList.add('navDown__btn', 'btn');
-btnShowAll.textContent = 'ShowAll';
-
-const btnShowCompleted = document.createElement('button');
-btnShowCompleted.classList.add('navDown__btn', 'btn');
-btnShowCompleted.textContent = 'ShowCompleted';
-
-const searchInput = document.createElement('input');
-searchInput.classList.add('navDown__input', 'input');
-searchInput.placeholder = 'Search ...';
-
-const btnSearchInput = document.createElement('button');
-btnSearchInput.classList.add('navDown__btn', 'btn', 'btn-search');
+import {root, todoApp, navUp, btnDeleteAll, btnDeleteLast, toDoInput, btnAdd, 
+        navDown, counterAll, counterCompleted, btnShowAll, 
+        btnShowCompleted, searchInput, btnSearchInput} from './elements.js';
 
 // ------------------------------- Arrays ---------------------------------
 
 let cardsArray = [];      // Массив с .card
-let arrCounter = [];      // счетчик индекса в объекте
+let arrCounter = [];      // счетчик индекса в объекте cardObj
 let comleteCounter = 0;
 
 // ------------------------------- card ---------------------------------
 
-function getToDoCard(cardObj) {
+function getToDoCard({id, text, date, isChecked}) {
   const card = document.createElement('div');
   card.classList.add('card');
-  card.setAttribute('id', `card-${cardObj.id}`);
+  card.setAttribute('id', `card-${id}`);
 
   const cardLeftContainer = document.createElement('div');
   cardLeftContainer.classList.add('card__LeftContainer');
 
   const btnCheck = document.createElement('button');
   btnCheck.classList.add('card__LeftContainer__btn', 'btn', 'btnCkeck');
-  btnCheck.innerText = cardObj.isChecked ? '✓' : '';
+  btnCheck.innerText = isChecked ? '✓' : '';
   
   const textArea = document.createElement('p');
   textArea.classList.add('card__LeftContainer__textArea');
-  textArea.innerText = cardObj.text;
+  textArea.innerText = text;
 
   const cardRightContainer = document.createElement('div');
   cardRightContainer.classList.add('card__RightContainer');
@@ -85,7 +35,7 @@ function getToDoCard(cardObj) {
 
   const cardDate = document.createElement('p');
   cardDate.classList.add('card__RightContainer__date');
-  cardDate.innerText = cardObj.date;
+  cardDate.innerText = date;
 
   card.append(cardLeftContainer, cardRightContainer);
   cardLeftContainer.append(btnCheck, textArea);
@@ -95,17 +45,17 @@ function getToDoCard(cardObj) {
 
   const checkCard = () => {
     cardsArray.filter(item => {
-      if (item.id == `card-${cardObj.id}`) {
+      if (item.id == `card-${id}`) {
         if (item.className == 'card') {
           item.className = 'card done';
           card.classList = 'card done';
-          cardObj.isChecked = true;
+          isChecked = true;
           btnCheck.innerText = '✓';
           item.firstChild.firstChild.innerText = '✓';
         } else if (item.className == 'card done') {
         item.className = 'card';
         card.classList = 'card';
-        cardObj.isChecked = false;
+        isChecked = false;
         btnCheck.innerText = '';
         item.firstChild.firstChild.innerText = '';
         }
@@ -121,7 +71,7 @@ function getToDoCard(cardObj) {
   // ------------------------------- btnClose -----------------------------------
   
   const closeCard = () => {
-    cardsArray = cardsArray.filter(item => !(item.id == `card-${cardObj.id}`)); // -________-
+    cardsArray = cardsArray.filter(item => !(item.id == `card-${id}`)); // -________-
     card.remove();
     counterAll.innerText = `All: ${cardsArray.length}`;
     comleteCounter = cardsArray.filter(item => item.className == 'card done').length;
